@@ -455,3 +455,8 @@ if (pgCmd && location.hash === '#/playground') {
   const input = document.getElementById('pg-in');
   if (input) { input.value = pgCmd; input.focus(); }
 }
+
+/* PWA：注册 Service Worker（全量预缓存，首次打开后可完全离线使用） */
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+  navigator.serviceWorker.register('./sw.js').catch((e) => console.warn('SW 注册失败:', String(e).slice(0,120)));
+}
