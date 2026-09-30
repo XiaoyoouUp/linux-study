@@ -17,7 +17,7 @@
 ESM 必须走 HTTP（双击 index.html 打不开），在仓库根目录起一个静态服务即可：
 
 ```bash
-npx serve -l 8080 .        # 或 python -m http.server 8080
+./serve.sh              # macOS/Linux；Windows 用 start.bat 或 npx serve -l 8080 .
 ```
 
 浏览器打开 `http://localhost:8080`。
