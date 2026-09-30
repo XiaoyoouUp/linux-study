@@ -1,0 +1,11 @@
+{
+  "name": "linux-study",
+  "version": "1.0.0",
+  "description": "Linux 系统化学习网站：图文课程 + 阶段测验考试 + 在线命令练习（对标 RHCSA 认证）",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"js/lib/*.test.js\"",
+    "start": "npx --yes serve -l 8080 ."
+  },
+  "license": "MIT"
+}

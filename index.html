@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux 学练营 — Linux 系统化学习与 RHCSA 认证备考</title>
+  <meta name="description" content="Linux 系统化学习网站：参照《鸟哥的Linux私房菜》体系的图文课程、阶段测验与考试、在线命令练习，对标 RHCSA 认证。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='8' y='8' width='84' height='84' rx='18' fill='%230d1b2e'/%3E%3Ctext x='50' y='63' font-size='44' font-family='monospace' fill='%23159A48' text-anchor='middle'%3E%26gt;_%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar" aria-label="课程导航">
+      <a class="brand" href="#/">
+        <svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true"><rect x="4" y="4" width="92" height="92" rx="20" fill="#0d1b2e"/><text x="50" y="66" font-size="48" font-family="monospace" fill="#159A48" text-anchor="middle">&gt;_</text></svg>
+        <span>Linux 学练营</span>
+      </a>
+      <nav id="nav"></nav>
+      <div id="nav-progress" class="nav-progress"></div>
+    </aside>
+    <div id="main-wrap">
+      <header id="topbar">
+        <button id="menu-btn" aria-label="打开导航">☰</button>
+        <div id="breadcrumb"></div>
+        <div id="topbar-right">
+          <div class="width-ctrl" id="width-ctrl" title="调整内容区宽度">
+            <button data-w="narrow" type="button">标准</button>
+            <button data-w="wide" type="button">宽</button>
+            <button data-w="full" type="button">全宽</button>
+          </div>
+          <span class="exam-badge" title="对标 Red Hat RHCSA (EX200) 考纲">RHCSA 备考</span>
+        </div>
+      </header>
+      <main id="content" tabindex="-1"></main>
+      <footer id="footer">
+        <p>Linux 学练营 · 课程内容基于《鸟哥的Linux私房菜》知识体系与 Red Hat RHCSA 考纲整理，仅供学习参考 · Red Hat、RHCSA 为 Red Hat, Inc. 商标</p>
+      </footer>
+    </div>
+  </div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
