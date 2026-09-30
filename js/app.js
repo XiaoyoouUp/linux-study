@@ -441,6 +441,11 @@ document.getElementById('width-ctrl').addEventListener('click', (e) => {
 let savedWidth = 'narrow';
 try { savedWidth = localStorage.getItem(WKEY) || 'narrow'; } catch { /* 忽略 */ }
 applyWidth(savedWidth);
+/* 本地双站导航：仅本地服务时显示（../ 为统一门户首页）；托管环境下隐藏避免死链 */
+if (/^(localhost|127.0.0.1|[::1]|::1)$/.test(location.hostname)) {
+  document.getElementById('nav-progress')?.insertAdjacentHTML('beforebegin',
+    '<a class="nav-link" href="../" style="margin-top:8px">📚 学习站导航</a>');
+}
 route();
 
 /* 从速查表带命令进入练习场 */
