@@ -38,5 +38,14 @@
     </div>
   </div>
   <script type="module" src="./js/app.js"></script>
+  <script>
+    /* file:// 下 ES 模块被浏览器 CORS 拦截，app.js 不会执行；用经典脚本给出明确指引 */
+    if (location.protocol === 'file:') {
+      document.getElementById('content').innerHTML =
+        '<div class="exam-cover" style="margin-top:40px"><div class="icon">📄</div><h1>请通过本地服务访问</h1>' +
+        '<p style="color:var(--ink-2);line-height:2">浏览器安全策略禁止在 <code>file://</code> 下加载 ES 模块，所以页面只剩外壳。<br>' +
+        '在项目根目录运行 <code>npx serve -l 8080 .</code>（或双击 <code>start.bat</code>），<br>然后浏览器访问 <code>http://localhost:8080</code>。</p></div>';
+    }
+  </script>
 </body>
 </html>
