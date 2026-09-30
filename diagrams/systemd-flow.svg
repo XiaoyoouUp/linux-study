@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="520" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">systemd 启动体系：target 与服务单元</text>
+  <rect x="330" y="62" width="200" height="56" rx="10" fill="#0d1b2e"/>
+  <text x="430" y="84" text-anchor="middle" fill="#ffffff" font-weight="bold">systemd（PID 1）<tspan x="430" dy="20" fill="#E8F7EE" font-weight="normal">1 号进程，一切服务之祖</tspan></text>
+  <line x1="430" y1="120" x2="430" y2="144" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="310" y="148" width="240" height="56" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="430" y="170" text-anchor="middle" font-weight="bold">default.target 默认启动目标<tspan x="430" dy="20" font-weight="normal" fill="#7b8ca0">systemctl get-default 查看</tspan></text>
+  <line x1="360" y1="206" x2="280" y2="248" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="500" y1="206" x2="580" y2="248" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="430" y="232" text-anchor="middle" fill="#7b8ca0">二选一（set-default 切换）</text>
+  <rect x="110" y="252" width="270" height="56" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="245" y="274" text-anchor="middle" font-weight="bold">multi-user.target<tspan x="245" dy="20" font-weight="normal" fill="#7b8ca0">多用户字符模式（服务器常用）</tspan></text>
+  <rect x="480" y="252" width="270" height="56" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="615" y="274" text-anchor="middle" font-weight="bold">graphical.target<tspan x="615" dy="20" font-weight="normal" fill="#7b8ca0">图形界面（含 multi-user 全部内容）</tspan></text>
+  <line x1="478" y1="280" x2="384" y2="280" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="430" y="270" text-anchor="middle" fill="#159A48" font-weight="bold">依赖并包含</text>
+  <line x1="245" y1="310" x2="245" y2="352" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="258" y="336" fill="#7b8ca0">Wants/Requires 拉起 · After 定顺序</text>
+  <rect x="60" y="356" width="370" height="76" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="80" y="380" fill="#159A48" font-weight="bold">multi-user 拉起的常见服务单元<tspan x="80" dy="22" fill="#0d1b2e" font-weight="normal">sshd · crond · NetworkManager · httpd …</tspan></text>
+  <rect x="480" y="356" width="310" height="76" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="500" y="380" font-weight="bold">单元类型<tspan font-weight="normal"> .service 服务 · .target 组单元</tspan><tspan x="500" dy="22" font-weight="normal"> .timer 定时触发 · .socket 按连接唤醒</tspan></text>
+  <text x="60" y="462" fill="#7b8ca0">systemctl enable sshd → 在 /etc/systemd/system/multi-user.target.wants/ 建软链接，开机自动拉起</text>
+  <text x="30" y="492" fill="#7b8ca0">考试常考：systemctl set-default graphical.target 切换图形；enable --now 一步启用并立即启动。</text>
+</svg>

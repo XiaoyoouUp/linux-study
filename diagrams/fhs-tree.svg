@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="530" viewBox="0 0 860 530" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <rect x="0" y="0" width="860" height="530" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">FHS 目录树：根 / 下的重要目录</text>
+  <path fill="none" stroke="#7b8ca0" stroke-width="1.5" d="M160,92 H520 M200,92 V484 M520,92 V412 M200,196 H220 M200,268 H220 M200,340 H220 M200,412 H220 M200,484 H220 M520,196 H540 M520,268 H540 M520,340 H540 M520,412 H540"/>
+  <rect x="40" y="70" width="120" height="44" rx="10" fill="#0d1b2e"/>
+  <text x="100" y="97" font-weight="bold" fill="#ffffff" text-anchor="middle">根目录 /</text>
+  <rect x="220" y="168" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="238" y="190" font-weight="bold" fill="#159A48">/etc<tspan x="238" dy="21" font-weight="normal" fill="#7b8ca0">系统与服务配置文件</tspan></text>
+  <rect x="220" y="240" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="238" y="262" font-weight="bold" fill="#159A48">/home<tspan x="238" dy="21" font-weight="normal" fill="#7b8ca0">用户家目录（student → /home/student）</tspan></text>
+  <rect x="220" y="312" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="238" y="334" font-weight="bold" fill="#159A48">/var<tspan x="238" dy="21" font-weight="normal" fill="#7b8ca0">日志、邮件、队列与网站数据</tspan></text>
+  <rect x="220" y="384" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="238" y="406" font-weight="bold" fill="#159A48">/usr<tspan x="238" dy="21" font-weight="normal" fill="#7b8ca0">软件与文档（dnf 安装到这里）</tspan></text>
+  <rect x="220" y="456" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="238" y="478" font-weight="bold" fill="#159A48">/boot<tspan x="238" dy="21" font-weight="normal" fill="#7b8ca0">内核与引导文件（vmlinuz、grub2）</tspan></text>
+  <rect x="540" y="168" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="558" y="190" font-weight="bold" fill="#159A48">/tmp<tspan x="558" dy="21" font-weight="normal" fill="#7b8ca0">临时文件，重启后可能清空</tspan></text>
+  <rect x="540" y="240" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="558" y="262" font-weight="bold" fill="#159A48">/opt<tspan x="558" dy="21" font-weight="normal" fill="#7b8ca0">第三方大型软件（如 /opt/app）</tspan></text>
+  <rect x="540" y="312" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="558" y="334" font-weight="bold" fill="#159A48">/root<tspan x="558" dy="21" font-weight="normal" fill="#7b8ca0">root 用户的家目录</tspan></text>
+  <rect x="540" y="384" width="280" height="56" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="558" y="406" font-weight="bold" fill="#159A48">/srv<tspan x="558" dy="21" font-weight="normal" fill="#7b8ca0">对外服务数据（FTP、Web）</tspan></text>
+  <text x="40" y="516">另外认识：/dev 设备文件、/proc 与 /sys 内核信息、/mnt 与 /media 临时挂载点。</text>
+</svg>

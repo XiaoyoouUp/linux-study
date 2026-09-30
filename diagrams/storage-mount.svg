@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="470" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">新磁盘上机：从分区到持久挂载五步</text>
+  <rect x="40" y="66" width="140" height="96" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="110" y="92" text-anchor="middle" fill="#159A48" font-weight="bold">① 识别<tspan x="110" dy="22" fill="#0d1b2e">新磁盘接入</tspan><tspan x="110" dy="22" fill="#7b8ca0" font-weight="normal"># lsblk 查看设备名</tspan></text>
+  <rect x="200" y="66" width="140" height="96" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="270" y="92" text-anchor="middle" font-weight="bold">② 分区<tspan x="270" dy="22" fill="#7b8ca0" font-weight="normal">fdisk /dev/sdb</tspan><tspan x="270" dy="22" fill="#7b8ca0" font-weight="normal">交互式 n 建分区</tspan></text>
+  <rect x="360" y="66" width="140" height="96" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="430" y="92" text-anchor="middle" font-weight="bold">③ 格式化<tspan x="430" dy="22" fill="#7b8ca0" font-weight="normal">mkfs.xfs</tspan><tspan x="430" dy="22" fill="#7b8ca0" font-weight="normal">对 /dev/sdb1 执行</tspan></text>
+  <rect x="520" y="66" width="140" height="96" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="590" y="92" text-anchor="middle" font-weight="bold">④ 挂载<tspan x="590" dy="22" fill="#7b8ca0" font-weight="normal">mount /dev/sdb1</tspan><tspan x="590" dy="22" fill="#7b8ca0" font-weight="normal">挂到 /mnt/data</tspan></text>
+  <rect x="680" y="66" width="140" height="96" rx="10" fill="#0d1b2e"/>
+  <text x="750" y="92" text-anchor="middle" fill="#F0B429" font-weight="bold">⑤ 持久化<tspan x="750" dy="22" fill="#E8F7EE" font-weight="normal">写入 /etc/fstab</tspan><tspan x="750" dy="22" fill="#E8F7EE" font-weight="normal">UUID 不随盘序变化</tspan></text>
+  <line x1="182" y1="114" x2="198" y2="114" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="342" y1="114" x2="358" y2="114" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="502" y1="114" x2="518" y2="114" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="662" y1="114" x2="678" y2="114" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="40" y="196" width="780" height="86" rx="10" fill="#0d1b2e"/>
+  <text x="60" y="224" fill="#159A48" font-weight="bold">$ vim /etc/fstab　# 每行一个挂载项<tspan x="60" dy="24" fill="#E8F7EE" font-weight="normal">UUID=3f7c2a…  /mnt/data  xfs  defaults  0 0</tspan><tspan x="60" dy="24" fill="#7b8ca0">　设备(UUID)　 挂载点　 类型　 选项　 转储 自检</tspan></text>
+  <rect x="40" y="308" width="780" height="64" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="60" y="334" font-weight="bold">每步验证命令（练习场不支持，请在真实环境练习）<tspan x="60" dy="22" font-weight="normal" fill="#7b8ca0">lsblk 看设备树 → blkid 看 UUID → df -h 看挂载与容量 → mount -a 测试 fstab</tspan></text>
+  <text x="30" y="444" fill="#7b8ca0">注意：fstab 写错可能导致开机失败，先 mount -a 验证再重启；卸载用 umount 挂载点。</text>
+</svg>

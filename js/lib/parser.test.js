@@ -163,5 +163,7 @@ test('man 分节号', () => ok('man 5 crontab', { positionals: ['5', 'crontab'] 
 test('man 缺页名', () => fail('man', '手册'));
 test('echo -n', () => ok('echo -n hello', { flag: { n: true } }));
 test('whoami / hostname / pwd / date', () => ok('whoami', {}) && ok('hostname', {}) && ok('pwd', {}) && ok('date', {}));
+test('cd 目录参数', () => ok('cd /etc', { program: 'cd', positionals: ['/etc'] }));
+test('cd 无参数回家目录', () => ok('cd', { program: 'cd', positionals: [] }));
 test('--help 全局可用', () => ok('chmod --help', { flag: { help: true } }));
 test('-h 短帮助', () => ok('ls -h /etc', { flag: { 'human-readable': true } }) && ok('tar --help', { flag: { help: true } }));

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="480" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">进程状态机与常用信号（kill）</text>
+  <rect x="200" y="70" width="130" height="48" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="265" y="99" text-anchor="middle" font-weight="bold">R 运行</text>
+  <rect x="50" y="180" width="140" height="48" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="120" y="209" text-anchor="middle">S 可中断睡眠</text>
+  <rect x="350" y="180" width="140" height="48" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="420" y="209" text-anchor="middle">D 不可中断睡眠</text>
+  <rect x="50" y="300" width="140" height="48" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="120" y="329" text-anchor="middle">T 停止</text>
+  <rect x="350" y="300" width="140" height="48" rx="10" fill="#ffffff" stroke="#c53030" stroke-width="2"/>
+  <text x="420" y="318" text-anchor="middle" fill="#c53030" font-weight="bold">Z 僵死<tspan x="420" dy="17" font-weight="normal">待父进程回收</tspan></text>
+  <line x1="245" y1="118" x2="140" y2="178" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="110" y1="178" x2="215" y2="120" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="204" y="145" fill="#7b8ca0">等待事件</text>
+  <text x="222" y="132" fill="#7b8ca0">被唤醒</text>
+  <line x1="285" y1="118" x2="390" y2="178" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="460" y1="178" x2="355" y2="120" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="346" y="150" fill="#7b8ca0">等待 I/O</text>
+  <text x="456" y="136" fill="#7b8ca0">I/O 完成</text>
+  <path d="M200,88 L26,88 L26,318 L46,318" fill="none" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="32" y="78" fill="#7b8ca0">SIGSTOP 暂停</text>
+  <path d="M50,332 L36,332 L36,102 L196,102" fill="none" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="104" y="120" fill="#7b8ca0">SIGCONT 恢复</text>
+  <path d="M330,90 L520,90 L520,324 L494,324" fill="none" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="586" y="64" width="234" height="280" rx="10" fill="#0d1b2e"/>
+  <text x="604" y="90" fill="#F0B429" font-weight="bold">常用信号（kill -信号 PID）<tspan x="604" dy="24" fill="#E8F7EE" font-weight="normal">TERM  15  优雅退出（默认）</tspan><tspan x="604" dy="22" fill="#E8F7EE" font-weight="normal">KILL   9  强制杀死，不可忽略</tspan><tspan x="604" dy="22" fill="#E8F7EE" font-weight="normal">HUP    1  重载配置文件</tspan><tspan x="604" dy="22" fill="#E8F7EE" font-weight="normal">STOP  19  暂停进程</tspan><tspan x="604" dy="22" fill="#E8F7EE" font-weight="normal">CONT  18  恢复进程</tspan><tspan x="604" dy="26" fill="#7b8ca0">kill 1234 → 默认发 TERM</tspan><tspan x="604" dy="20" fill="#7b8ca0">kill -9 1234 → 强制杀死</tspan><tspan x="604" dy="20" fill="#7b8ca0">kill -15 等价于 kill</tspan></text>
+  <text x="40" y="400" fill="#c53030">D 状态连 kill -9 也无法终止，只能等 I/O 返回；Z 僵死需父进程回收或重启父进程。</text>
+  <text x="30" y="456" fill="#7b8ca0">ps aux 的 STAT 列显示状态：R 运行 / S 睡眠 / D 磁盘等待 / T 暂停 / Z 僵死；kill 默认发 SIGTERM。</text>
+</svg>

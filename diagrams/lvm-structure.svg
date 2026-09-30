@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="500" viewBox="0 0 860 500" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="500" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">LVM 逻辑卷层级与在线扩容路径</text>
+  <rect x="60" y="64" width="400" height="46" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="260" y="92" text-anchor="middle" font-weight="bold">① 物理磁盘 / 分区：<tspan fill="#7b8ca0" font-weight="normal">/dev/sda1、/dev/sdb1</tspan></text>
+  <rect x="60" y="124" width="400" height="46" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="260" y="152" text-anchor="middle" font-weight="bold">② PV 物理卷<tspan fill="#7b8ca0" font-weight="normal">（pvcreate 初始化）</tspan></text>
+  <rect x="60" y="184" width="400" height="46" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="260" y="212" text-anchor="middle" font-weight="bold">③ VG 卷组 vg0<tspan font-weight="normal">：容量池（PV 之和）</tspan></text>
+  <rect x="60" y="244" width="400" height="46" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="260" y="272" text-anchor="middle" font-weight="bold">④ LV 逻辑卷<tspan fill="#7b8ca0" font-weight="normal">：/dev/vg0/lv_data 可动态扩容</tspan></text>
+  <rect x="60" y="304" width="400" height="46" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="260" y="332" text-anchor="middle" font-weight="bold">⑤ 文件系统<tspan fill="#7b8ca0" font-weight="normal">：mkfs.xfs 或 ext4</tspan></text>
+  <rect x="60" y="364" width="400" height="46" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="260" y="392" text-anchor="middle" font-weight="bold">⑥ 挂载点<tspan fill="#7b8ca0" font-weight="normal">：/data（业务数据目录）</tspan></text>
+  <line x1="260" y1="110" x2="260" y2="122" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="260" y1="170" x2="260" y2="182" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="260" y1="230" x2="260" y2="242" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="260" y1="290" x2="260" y2="302" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="260" y1="350" x2="260" y2="362" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="510" y="64" width="320" height="170" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="530" y="92" font-weight="bold">在线扩容（VG 有剩余空间时）<tspan x="530" dy="24" fill="#159A48" font-weight="bold">$ lvextend -L +5G /dev/vg0/lv_data</tspan><tspan x="530" dy="24" fill="#159A48" font-weight="bold">$ xfs_growfs /data　# xfs 对挂载点扩</tspan><tspan x="530" dy="24" fill="#159A48" font-weight="bold">$ resize2fs /dev/vg0/lv_data　# ext4</tspan><tspan x="530" dy="24" fill="#7b8ca0" font-weight="normal">扩容期间业务不中断</tspan></text>
+  <rect x="510" y="254" width="320" height="96" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="530" y="282" font-weight="bold">VG 空间不足时<tspan x="530" dy="22" font-weight="normal">先加新 PV：pvcreate 新盘</tspan><tspan x="530" dy="22" fill="#7b8ca0" font-weight="normal">再 vgextend vg0 新PV 并入池</tspan></text>
+  <text x="30" y="470" fill="#7b8ca0">LVM 的价值：把多块盘合成容量池，按需分配、在线扩容；练习场不支持 LVM 命令，请在真实环境练习。</text>
+</svg>

@@ -132,6 +132,7 @@ export const exam = {
 | fhs-tree.svg | FHS 目录树：/etc /home /var /usr /boot /tmp 等用途标注 |
 | permission-model.svg | ls -l 字段分解与 ugo/rwx 权限位、八进制换算 |
 | hard-vs-soft-link.svg | 硬链接（同一 inode）vs 符号链接（指向路径）对比 |
+| file-operations.svg | cp/mv/rm/ln 对目录项与 inode 的影响示意 |
 | vim-modes.svg | vim 普通模式/插入模式/末行模式切换键位图 |
 | io-redirection.svg | 标准流与重定向：> >> 2> &> | 数据流图 |
 | text-pipeline.svg | 管道文本处理流：grep 过滤 → sed 编辑 → awk 取列 |
@@ -145,6 +146,7 @@ export const exam = {
 | dnf-workflow.svg | dnf 工作流：repo 元数据 → 依赖解析 → 事务安装（vs rpm 直装） |
 | network-firewalld.svg | NetworkManager/nmcli 配置与 firewalld 区域流量路径 |
 | lvm-structure.svg | LVM 层级：物理盘→PV→VG→LV→文件系统→挂载点 |
+| storage-mount.svg | 存储使用流程：磁盘→分区→文件系统→挂载点→fstab 持久化 |
 | boot-process.svg | 开机流程：固件→GRUB2→内核+initramfs→systemd→target |
 | selinux-context.svg | SELinux 上下文与 DAC/MAC 两级决策流、模式切换 |
 | rhcsa-exam-map.svg | RHCSA EX200 考纲域与本站阶段映射图 |

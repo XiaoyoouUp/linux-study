@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker>
+    <marker id="ahr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c53030"/></marker>
+  </defs>
+  <rect x="0" y="0" width="860" height="480" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">标准流与重定向：0 / 1 / 2</text>
+  <rect x="40" y="120" width="140" height="44" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="110" y="147" text-anchor="middle">输入文件</text>
+  <text x="239" y="130" fill="#159A48" text-anchor="middle" font-weight="bold">&lt; 输入重定向</text>
+  <line x1="182" y1="142" x2="296" y2="142" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="300" y="100" width="200" height="90" rx="10" fill="#0d1b2e"/>
+  <text x="400" y="126" font-weight="bold" fill="#ffffff" text-anchor="middle">命令（进程）<tspan x="400" dy="22" fill="#E8F7EE" font-weight="normal">stdin=0 接收输入</tspan><tspan x="400" dy="22">stdout=1 / stderr=2</tspan></text>
+  <text x="400" y="216" text-anchor="middle"><tspan fill="#159A48">绿＝stdout</tspan>　<tspan fill="#c53030">红＝stderr</tspan>　黄＝两者</text>
+  <rect x="570" y="70" width="240" height="40" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="690" y="95" text-anchor="middle" font-weight="bold">&gt; 文件　覆盖写入</text>
+  <rect x="570" y="125" width="240" height="40" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="690" y="150" text-anchor="middle" font-weight="bold">&gt;&gt; 文件　追加写入</text>
+  <rect x="570" y="180" width="240" height="40" rx="8" fill="#ffffff" stroke="#c53030" stroke-width="1.5"/>
+  <text x="690" y="205" text-anchor="middle" font-weight="bold" fill="#c53030">2&gt; 错误　单独记录</text>
+  <rect x="570" y="235" width="240" height="40" rx="8" fill="#ffffff" stroke="#F0B429" stroke-width="1.5"/>
+  <text x="690" y="260" text-anchor="middle" font-weight="bold">&amp;&gt; 合并 stdout+stderr</text>
+  <rect x="570" y="300" width="240" height="44" rx="8" fill="#ffffff" stroke="#159A48" stroke-width="1.5"/>
+  <text x="690" y="320" text-anchor="middle" font-weight="bold">下一命令<tspan x="690" dy="18" font-weight="normal" fill="#7b8ca0">接住 cmd1 的 stdout</tspan></text>
+  <rect x="570" y="375" width="240" height="40" rx="8" fill="#0d1b2e"/>
+  <text x="690" y="400" fill="#E8F7EE" text-anchor="middle" font-weight="bold">&gt;/dev/null　丢弃不保存</text>
+  <line x1="502" y1="128" x2="566" y2="90" stroke="#159A48" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="502" y1="140" x2="566" y2="145" stroke="#159A48" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="502" y1="150" x2="566" y2="322" stroke="#159A48" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="502" y1="160" x2="566" y2="200" stroke="#c53030" stroke-width="1.5" marker-end="url(#ahr)"/>
+  <line x1="502" y1="172" x2="566" y2="255" stroke="#F0B429" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="502" y1="182" x2="566" y2="395" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="40" y="450">管道 | 只接 stdout；stderr 想进管道或文件：2&gt;&amp;1 或 2&gt; 文件。<tspan x="40" dy="21" fill="#7b8ca0">练习场不支持重定向与管道语法，请在真实终端练习。</tspan></text>
+</svg>

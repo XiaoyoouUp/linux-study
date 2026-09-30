@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="460" viewBox="0 0 860 460" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="460" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">Linux 开机流程四阶段</text>
+  <rect x="40" y="70" width="165" height="110" rx="10" fill="#0d1b2e"/>
+  <text x="122" y="98" text-anchor="middle" fill="#F0B429" font-weight="bold">① 固件<tspan x="122" dy="22" fill="#E8F7EE" font-weight="normal">BIOS / UEFI 自检</tspan><tspan x="122" dy="22" fill="#E8F7EE" font-weight="normal">定位启动介质</tspan></text>
+  <rect x="245" y="70" width="165" height="110" rx="10" fill="#0d1b2e"/>
+  <text x="327" y="98" text-anchor="middle" fill="#F0B429" font-weight="bold">② GRUB2 引导菜单<tspan x="327" dy="22" fill="#E8F7EE" font-weight="normal">显示可选内核</tspan><tspan x="327" dy="22" fill="#E8F7EE" font-weight="normal">加载 vmlinuz+initramfs</tspan></text>
+  <rect x="450" y="70" width="165" height="110" rx="10" fill="#0d1b2e"/>
+  <text x="532" y="98" text-anchor="middle" fill="#F0B429" font-weight="bold">③ 内核 + initramfs<tspan x="532" dy="22" fill="#E8F7EE" font-weight="normal">加载驱动与模块</tspan><tspan x="532" dy="22" fill="#E8F7EE" font-weight="normal">挂载真正的根 /</tspan></text>
+  <rect x="655" y="70" width="165" height="110" rx="10" fill="#0d1b2e"/>
+  <text x="737" y="98" text-anchor="middle" fill="#F0B429" font-weight="bold">④ systemd 接管<tspan x="737" dy="22" fill="#E8F7EE" font-weight="normal">按 default.target</tspan><tspan x="737" dy="22" fill="#E8F7EE" font-weight="normal">并行拉起各服务</tspan></text>
+  <line x1="207" y1="125" x2="243" y2="125" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="412" y1="125" x2="448" y2="125" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="617" y1="125" x2="653" y2="125" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="40" y="210" fill="#7b8ca0">GRUB2 配置 /boot/grub2/grub.cfg；内核 vmlinuz 与 initramfs 都在 /boot/ 下</text>
+  <rect x="40" y="240" width="430" height="110" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="60" y="268" font-weight="bold">调试入口：rd.break（忘记 root 密码时）<tspan x="60" dy="24" font-weight="normal">GRUB2 菜单按 e，在 linux 行尾追加 rd.break</tspan><tspan x="60" dy="24" font-weight="normal" fill="#159A48">→ 进入 initramfs 紧急 shell，再改 root 密码</tspan></text>
+  <line x1="430" y1="236" x2="430" y2="186" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="510" y="240" width="310" height="110" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="530" y="268" font-weight="bold">启动终点对比<tspan x="530" dy="24" font-weight="normal">multi-user.target → 字符登录</tspan><tspan x="530" dy="24" font-weight="normal">graphical.target → 图形登录</tspan></text>
+  <text x="30" y="436" fill="#7b8ca0">考试要求配置重启后仍生效：挂载写 /etc/fstab、服务用 systemctl enable、网络用 nmcli 持久化。</text>
+</svg>

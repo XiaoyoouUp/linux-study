@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="490" viewBox="0 0 860 490" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="490" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">Shell 脚本：自上而下的执行流</text>
+  <rect x="60" y="64" width="310" height="48" rx="8" fill="#E8F7EE" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="84" font-weight="bold">① shebang：#!/bin/bash<tspan x="75" dy="19" font-weight="normal" fill="#7b8ca0">告诉系统用 bash 解释本文件</tspan></text>
+  <rect x="60" y="132" width="310" height="48" rx="8" fill="#E8F7EE" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="152" font-weight="bold">② 变量与位置参数<tspan x="75" dy="19" font-weight="normal" fill="#7b8ca0">name=值；$1、$2、${1:-默认值}</tspan></text>
+  <rect x="60" y="200" width="310" height="48" rx="8" fill="#E8F7EE" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="220" font-weight="bold">③ if 条件分支<tspan x="75" dy="19" font-weight="normal" fill="#7b8ca0">if …; then … else … fi</tspan></text>
+  <rect x="60" y="268" width="310" height="48" rx="8" fill="#E8F7EE" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="288" font-weight="bold">④ for 循环<tspan x="75" dy="19" font-weight="normal" fill="#7b8ca0">for i in 列表; do … done</tspan></text>
+  <rect x="60" y="336" width="310" height="48" rx="8" fill="#E8F7EE" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="356" font-weight="bold">⑤ 函数<tspan x="75" dy="19" font-weight="normal" fill="#7b8ca0">log() { …; }，写 log 即调用</tspan></text>
+  <rect x="60" y="404" width="310" height="48" rx="8" fill="#E8F7EE" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="424" font-weight="bold">⑥ exit 退出码<tspan x="75" dy="19" font-weight="normal" fill="#7b8ca0">0=成功，非 0=失败（$? 查看）</tspan></text>
+  <line x1="215" y1="114" x2="215" y2="130" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="215" y1="182" x2="215" y2="198" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="215" y1="250" x2="215" y2="266" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="215" y1="318" x2="215" y2="334" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="215" y1="386" x2="215" y2="402" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="420" y="64" width="410" height="386" rx="10" fill="#0d1b2e"/>
+  <text x="440" y="92" fill="#E8F7EE"><tspan fill="#F0B429" font-weight="bold">#!/bin/bash</tspan><tspan x="440" dy="19" fill="#F0B429"># backup.sh —— 演示脚本</tspan><tspan x="440" dy="19">SRC=${1:-/home/student}</tspan><tspan x="440" dy="19">DEST=/backup</tspan><tspan x="440" dy="19">if [ ! -d "$DEST" ]; then</tspan><tspan x="440" dy="19">　mkdir -p "$DEST"</tspan><tspan x="440" dy="19">fi</tspan><tspan x="440" dy="19">for f in "$SRC"/*.md; do</tspan><tspan x="440" dy="19">　cp -v "$f" "$DEST/"</tspan><tspan x="440" dy="19">done</tspan><tspan x="440" dy="19">log() {</tspan><tspan x="440" dy="19">　echo "[$(date)] 备份完成"</tspan><tspan x="440" dy="19">}</tspan><tspan x="440" dy="19">log</tspan><tspan x="440" dy="19" fill="#F0B429" font-weight="bold">exit 0</tspan><tspan x="440" dy="19" fill="#7b8ca0">echo $?　# → 0</tspan></text>
+  <text x="60" y="472">运行：bash backup.sh，或 chmod +x backup.sh 后 ./backup.sh；用 echo $? 查看退出码。</text>
+</svg>

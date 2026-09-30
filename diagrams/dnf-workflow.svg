@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="480" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">dnf 工作流：自动解决依赖的包管理</text>
+  <rect x="40" y="70" width="180" height="86" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="130" y="96" text-anchor="middle" font-weight="bold">仓库元数据<tspan x="130" dy="20" fill="#7b8ca0" font-weight="normal">/etc/yum.repos.d/</tspan><tspan x="130" dy="20" fill="#7b8ca0" font-weight="normal">提供 BaseOS 源</tspan></text>
+  <rect x="240" y="70" width="180" height="86" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="330" y="96" text-anchor="middle" font-weight="bold">依赖解析<tspan x="330" dy="20" fill="#7b8ca0" font-weight="normal">自动找齐所需依赖包</tspan><tspan x="330" dy="20" fill="#7b8ca0" font-weight="normal">并计算安装顺序</tspan></text>
+  <rect x="440" y="70" width="180" height="86" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="530" y="96" text-anchor="middle" font-weight="bold">执行事务<tspan x="530" dy="20" fill="#7b8ca0" font-weight="normal">下载 → 校验 → 安装</tspan><tspan x="530" dy="20" fill="#7b8ca0" font-weight="normal">失败则整体回滚</tspan></text>
+  <rect x="640" y="70" width="180" height="86" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="730" y="96" text-anchor="middle" font-weight="bold">rpm 数据库<tspan x="730" dy="20" fill="#7b8ca0" font-weight="normal">记录已装文件清单</tspan><tspan x="730" dy="20" fill="#7b8ca0" font-weight="normal">供 rpm -q 查询</tspan></text>
+  <line x1="222" y1="113" x2="236" y2="113" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="422" y1="113" x2="436" y2="113" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="622" y1="113" x2="636" y2="113" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="240" y="210" width="180" height="64" rx="10" fill="#ffffff" stroke="#c53030" stroke-width="2"/>
+  <text x="330" y="234" text-anchor="middle" fill="#c53030" font-weight="bold">rpm -ivh 直装<tspan x="330" dy="20" font-weight="normal">不解析依赖，缺包即失败</tspan></text>
+  <path d="M130,158 L130,242 L236,242" fill="none" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="142" y="200" fill="#c53030">绕过依赖解析</text>
+  <line x1="422" y1="242" x2="560" y2="162" stroke="#7b8ca0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <text x="492" y="206" fill="#7b8ca0">同样写入 rpm 数据库</text>
+  <rect x="40" y="310" width="780" height="96" rx="10" fill="#0d1b2e"/>
+  <text x="60" y="336" fill="#159A48" font-weight="bold">$ dnf install httpd -y<tspan fill="#7b8ca0" font-weight="normal">　# 自动解决依赖并安装</tspan><tspan x="60" dy="22" fill="#E8F7EE" font-weight="normal">→ 下载并安装 httpd 及其依赖，事务完成写入 rpm 数据库</tspan><tspan x="60" dy="22" fill="#7b8ca0">$ dnf remove / update / search / provides … 同样自动解析依赖</tspan></text>
+  <text x="30" y="456" fill="#7b8ca0">仓库配置在 /etc/yum.repos.d/；练习场支持 dnf install/remove/update/list/search/provides。</text>
+</svg>

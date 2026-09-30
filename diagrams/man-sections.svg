@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="390" viewBox="0 0 860 390" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <rect x="0" y="0" width="860" height="390" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">man 手册：分节结构与翻页</text>
+  <rect x="40" y="60" width="270" height="250" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="55" y="88" font-weight="bold">常用分节（man 节号 名称）</text>
+  <text x="55" y="118" font-weight="bold" fill="#159A48">1　用户命令<tspan fill="#7b8ca0" font-weight="normal">　ls、passwd</tspan></text>
+  <text x="55" y="148">2　系统调用<tspan fill="#7b8ca0">　内核接口</tspan></text>
+  <text x="55" y="178">3　库函数<tspan fill="#7b8ca0">　C 库接口</tspan></text>
+  <text x="55" y="208" font-weight="bold" fill="#159A48">5　配置文件格式<tspan fill="#7b8ca0" font-weight="normal">　crontab(5)</tspan></text>
+  <text x="55" y="238" font-weight="bold" fill="#159A48">8　管理命令<tspan fill="#7b8ca0" font-weight="normal">　systemctl(8)</tspan></text>
+  <rect x="330" y="60" width="220" height="250" rx="10" fill="#0d1b2e"/>
+  <text x="345" y="90" fill="#F0B429" font-weight="bold">CRONTAB(5)<tspan x="345" dy="24" fill="#E8F7EE">NAME</tspan><tspan x="345" dy="18">　crontab - 定时任务配置</tspan><tspan x="345" dy="24">SYNOPSIS</tspan><tspan x="345" dy="18">　crontab [options]</tspan><tspan x="345" dy="24">DESCRIPTION</tspan><tspan x="345" dy="18">　分 时 日 月 周五个字段</tspan><tspan x="345" dy="34" fill="#7b8ca0">crontab(5) · 第 1 行</tspan></text>
+  <rect x="570" y="60" width="250" height="250" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="585" y="88" font-weight="bold">翻页与搜索操作</text>
+  <text x="585" y="118">空格 / f：下一页</text>
+  <text x="585" y="148">b：上一页　↑ / ↓：滚一行</text>
+  <text x="585" y="178">/关键字：向下搜索，n 下一个</text>
+  <text x="585" y="208">q：退出 man</text>
+  <text x="585" y="238" font-weight="bold" fill="#159A48">man -k 关键词：搜相关命令</text>
+  <text x="40" y="345">示例：man 5 crontab 打开第 5 节；man crontab 不写节号时，按节号从小到大打开第一个匹配。<tspan x="40" dy="21" fill="#7b8ca0">同一名字可在多节：第 1 节讲命令用法，第 5 节讲配置文件格式。</tspan></text>
+</svg>

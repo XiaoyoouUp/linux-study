@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="530" viewBox="0 0 860 530" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="530" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">网络配置（NetworkManager）与 firewalld 防火墙</text>
+  <text x="480" y="60" fill="#7b8ca0">入站流量的检查路径（自上而下）</text>
+  <rect x="40" y="70" width="250" height="64" rx="10" fill="#0d1b2e"/>
+  <text x="165" y="94" text-anchor="middle" fill="#ffffff" font-weight="bold">NetworkManager<tspan x="165" dy="20" fill="#E8F7EE" font-weight="normal">网络管理器，nmcli 是命令行</tspan></text>
+  <line x1="165" y1="136" x2="165" y2="162" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="40" y="166" width="250" height="76" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="165" y="192" text-anchor="middle" font-weight="bold">网卡与地址路由<tspan x="165" dy="20" fill="#7b8ca0" font-weight="normal">ip addr 看地址 · ip route 看路由</tspan></text>
+  <text x="40" y="272" fill="#7b8ca0">nmcli device status / connection show（练习场支持只读查看）</text>
+  <rect x="560" y="70" width="180" height="52" rx="10" fill="#F0B429"/>
+  <text x="650" y="101" text-anchor="middle" font-weight="bold">外部流量进站</text>
+  <line x1="650" y1="124" x2="650" y2="148" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="480" y="152" width="340" height="64" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="650" y="176" text-anchor="middle" font-weight="bold">firewalld 区域（zone）<tspan x="650" dy="20" font-weight="normal" fill="#7b8ca0">public 默认 · trusted 全放行</tspan></text>
+  <line x1="650" y1="218" x2="650" y2="242" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="480" y="246" width="340" height="64" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="650" y="270" text-anchor="middle" font-weight="bold">按服务 / 端口放行<tspan x="650" dy="20" fill="#7b8ca0" font-weight="normal">22/tcp ssh · 80/tcp http · 443/tcp https</tspan></text>
+  <line x1="650" y1="312" x2="650" y2="336" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="480" y="340" width="340" height="52" rx="10" fill="#0d1b2e"/>
+  <text x="650" y="371" text-anchor="middle" fill="#ffffff" font-weight="bold">到达本机服务<tspan fill="#E8F7EE" font-weight="normal">：sshd / httpd</tspan></text>
+  <rect x="40" y="412" width="780" height="76" rx="10" fill="#0d1b2e"/>
+  <text x="60" y="436" fill="#159A48" font-weight="bold">$ firewall-cmd --list-all<tspan fill="#7b8ca0" font-weight="normal">　# 查看当前放行规则</tspan><tspan x="60" dy="22" fill="#E8F7EE" font-weight="normal">$ firewall-cmd --permanent --add-service=http &amp;&amp; firewall-cmd --reload</tspan></text>
+  <text x="30" y="512" fill="#7b8ca0">改完 --permanent 配置必须 --reload 才生效；练习场不支持 firewall-cmd，请在真实环境练习。</text>
+</svg>

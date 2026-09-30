@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <rect x="0" y="0" width="860" height="400" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">Linux 发行版族谱与包管理器</text>
+  <path fill="none" stroke="#7b8ca0" stroke-width="1.5" d="M430,92 L150,150 M430,92 L440,150 M430,92 V120 H620 M620,120 V302 M620,232 H640 M620,302 H640 M150,198 V260 M150,300 V330 M440,198 V260 M440,300 L415,330 M440,300 L605,330"/>
+  <rect x="330" y="48" width="200" height="44" rx="10" fill="#0d1b2e"/>
+  <text x="430" y="75" font-weight="bold" fill="#ffffff" text-anchor="middle">Linux 内核</text>
+  <rect x="640" y="48" width="180" height="44" rx="10" fill="#159A48"/>
+  <text x="730" y="66" font-weight="bold" fill="#ffffff" text-anchor="middle">本站路线：RHEL 系<tspan x="730" dy="18">RHCSA 备考重点</tspan></text>
+  <rect x="50" y="150" width="200" height="48" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="150" y="170" font-weight="bold" text-anchor="middle">Debian 系<tspan x="150" dy="19" font-weight="normal" fill="#159A48">软件包：apt</tspan></text>
+  <rect x="330" y="150" width="220" height="48" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="440" y="170" font-weight="bold" text-anchor="middle">Red Hat 系<tspan x="440" dy="19" font-weight="normal" fill="#159A48">软件包：dnf / yum</tspan></text>
+  <rect x="640" y="210" width="180" height="44" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="730" y="228" font-weight="bold" text-anchor="middle">openSUSE<tspan x="730" dy="18" font-weight="normal" fill="#159A48">zypper</tspan></text>
+  <rect x="640" y="280" width="180" height="44" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="730" y="298" font-weight="bold" text-anchor="middle">Arch Linux<tspan x="730" dy="18" font-weight="normal" fill="#159A48">pacman</tspan></text>
+  <rect x="60" y="260" width="180" height="40" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="150" y="285" text-anchor="middle">Debian</text>
+  <rect x="70" y="330" width="160" height="40" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="150" y="355" text-anchor="middle">Ubuntu</text>
+  <rect x="350" y="260" width="180" height="40" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="440" y="285" font-weight="bold" text-anchor="middle">RHEL</text>
+  <rect x="330" y="330" width="170" height="40" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="415" y="355" text-anchor="middle">CentOS Stream</text>
+  <rect x="520" y="330" width="170" height="40" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="605" y="355" text-anchor="middle">Fedora</text>
+</svg>

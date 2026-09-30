@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <rect x="0" y="0" width="860" height="470" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">权限模型：rwx 与八进制换算</text>
+  <text x="120" y="72"><tspan fill="#159A48" font-weight="bold">$ ls -l</tspan> 输出：-rwxr-xr-- 1 student student 1024 notes.txt</text>
+  <rect x="120" y="92" width="44" height="40" rx="6" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="142" y="117" text-anchor="middle" font-weight="bold">-</text>
+  <rect x="168" y="92" width="84" height="40" rx="6" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="210" y="117" text-anchor="middle" font-weight="bold">rwx</text>
+  <rect x="256" y="92" width="84" height="40" rx="6" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="298" y="117" text-anchor="middle" font-weight="bold">r-x</text>
+  <rect x="344" y="92" width="84" height="40" rx="6" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="386" y="117" text-anchor="middle" font-weight="bold">r--</text>
+  <text x="142" y="152" fill="#7b8ca0" text-anchor="middle">类型</text>
+  <text x="210" y="152" fill="#7b8ca0" text-anchor="middle">属主 u</text>
+  <text x="298" y="152" fill="#7b8ca0" text-anchor="middle">属组 g</text>
+  <text x="386" y="152" fill="#7b8ca0" text-anchor="middle">其他人 o</text>
+  <text x="460" y="117" fill="#7b8ca0">1　student　student　1024　文件名</text>
+  <rect x="60" y="190" width="380" height="225" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="75" y="218" font-weight="bold" fill="#159A48">八进制换算：r=4，w=2，x=1</text>
+  <text x="75" y="250">rwx = 4+2+1 = 7</text>
+  <text x="75" y="278">r-x = 4+0+1 = 5</text>
+  <text x="75" y="306">r-- = 4+0+0 = 4</text>
+  <text x="75" y="334" font-weight="bold" fill="#159A48">rwxr-xr-- → 754</text>
+  <text x="75" y="368" font-weight="bold">chmod 754 notes.txt</text>
+  <rect x="480" y="190" width="320" height="225" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="495" y="218" font-weight="bold">符号模式：给谁加 / 减什么权限</text>
+  <text x="495" y="250">chmod u+x f　属主加执行</text>
+  <text x="495" y="278">chmod go-rwx f　组与他人全去掉</text>
+  <text x="495" y="306">chmod a=r f　所有人=只读</text>
+  <text x="495" y="334" fill="#7b8ca0">u/g/o：属主/属组/其他人　a：全部</text>
+  <text x="60" y="448"><tspan fill="#c53030" font-weight="bold">注意：</tspan>目录的 x 表示能否进入（cd），文件的 x 表示能否执行。</text>
+</svg>

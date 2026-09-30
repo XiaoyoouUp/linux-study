@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="460" viewBox="0 0 860 460" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="460" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">系统日志流转：journald → rsyslog → /var/log</text>
+  <rect x="40" y="76" width="180" height="64" rx="10" fill="#0d1b2e"/>
+  <text x="130" y="100" text-anchor="middle" fill="#ffffff" font-weight="bold">服务与内核<tspan x="130" dy="20" fill="#E8F7EE" font-weight="normal">sshd / crond / 内核</tspan></text>
+  <line x1="222" y1="96" x2="296" y2="88" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="222" y1="120" x2="296" y2="196" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="300" y="56" width="250" height="64" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="425" y="80" text-anchor="middle" font-weight="bold">journald（systemd 自带）<tspan x="425" dy="20" font-weight="normal" fill="#7b8ca0">先收进内存，可持久化到磁盘</tspan></text>
+  <line x1="425" y1="122" x2="425" y2="166" stroke="#7b8ca0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <text x="440" y="148" fill="#7b8ca0">转发</text>
+  <rect x="300" y="170" width="250" height="64" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="425" y="194" text-anchor="middle" font-weight="bold">rsyslogd<tspan x="425" dy="20" font-weight="normal" fill="#7b8ca0">按类别分拣成文本日志</tspan></text>
+  <line x1="552" y1="200" x2="614" y2="150" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="620" y="56" width="210" height="178" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="640" y="80" fill="#159A48" font-weight="bold">/var/log 下的常用日志<tspan x="640" dy="24" font-weight="normal">messages 系统通用日志</tspan><tspan x="640" dy="22" font-weight="normal">secure 认证与 sudo</tspan><tspan x="640" dy="22" font-weight="normal">cron 计划任务</tspan><tspan x="640" dy="22" font-weight="normal">dnf.log 软件包操作</tspan><tspan x="640" dy="22" font-weight="normal">boot.log 启动过程</tspan></text>
+  <path d="M300,122 L260,122 L260,310 L294,310" fill="none" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="178" y="222" fill="#7b8ca0">随时查询</text>
+  <rect x="300" y="278" width="250" height="64" rx="10" fill="#0d1b2e"/>
+  <text x="425" y="302" text-anchor="middle" fill="#F0B429" font-weight="bold">journalctl 查询入口<tspan x="425" dy="20" fill="#E8F7EE" font-weight="normal">journalctl -u sshd --since today</tspan></text>
+  <rect x="620" y="278" width="210" height="64" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="725" y="302" text-anchor="middle" font-weight="bold">logrotate 轮转<tspan x="725" dy="20" font-weight="normal" fill="#7b8ca0">按周轮转+压缩旧日志</tspan></text>
+  <line x1="725" y1="236" x2="725" y2="274" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="620" y="366" fill="#7b8ca0">压缩为 *.gz 并按配置保留份数</text>
+  <text x="30" y="440" fill="#7b8ca0">配置：/etc/rsyslog.conf 与 /etc/logrotate.conf；journalctl、rsyslog 命令练习场不支持，真实环境练习。</text>
+</svg>

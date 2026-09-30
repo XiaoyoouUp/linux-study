@@ -1,0 +1,33 @@
+/* 阶段二结业考试：文件、目录与权限 */
+export const exam = {
+  id: 'exam2',
+  stageId: 's2',
+  title: '阶段二结业考试',
+  duration: 30,
+  passScore: 66,
+  questions: [
+    { id: 'q-exam2-1', type: 'single', q: 'server1 的 SSH 服务被怀疑遭到密码爆破。按 FHS 的分工，应到哪个文件确认服务端配置，再到哪个文件排查失败记录？', options: ['/etc/ssh/sshd_config；/var/log/secure', '/var/log/secure；/etc/ssh/sshd_config', '/etc/secure；/var/log/ssh/sshd_config', '/opt/ssh/sshd_config；/home/student/access.log'], answer: [0], explain: '配置住 /etc（服务端配置是 /etc/ssh/sshd_config，可 <code>cat</code> 直接查看），日志住 /var/log（RHEL 把认证与安全相关记录统一写入 /var/log/secure，<code>grep Failed /var/log/secure</code> 立刻能看到爆破尝试——练习场里这条命令有真实输出）。/etc/secure 与 /var/log/ssh 都是想当然的不存在路径；access.log 是 Web 访问日志。' },
+    { id: 'q-exam2-2', type: 'judge', q: '在 /home/student/docs 目录下，相对路径 ../.. 指向 /home。', options: ['正确', '错误'], answer: [0], explain: '.. 每出现一次就上升一层：从 docs 到 /home/student 是一个 ..，再到 /home 是两个。逐层数 .. 是读相对路径的基本功；考试与脚本里拿不准时，一律改用绝对路径表达。' },
+    { id: 'q-exam2-3', type: 'single', q: '按 FHS 的放置原则，下列用法中错误的是？', options: ['把网站根目录放在 /var/www/html', '把内核镜像放在 /boot', '把应用配置放在 /etc/app.conf', '把日常业务数据库的大数据文件放在 /etc/db/data'], answer: [3], explain: '/etc 只放配置不放数据：海量业务数据混进去会让配置备份、包管理与审计全部失真，数据应按用途放 /srv（服务数据）或 /var（可变数据）。A/B/C 都是标准放置——RHEL 的 httpd 默认网站根就是 /var/www/html，内核在 /boot，应用配置在 /etc。' },
+    { id: 'q-exam2-4', type: 'single', q: '执行 <code>cp /home/student/docs /tmp/docs</code>（未加任何旗标），结果是？', options: ['docs 目录连同内容复制成功', 'cp 报错并跳过目录，提示需要 -r', '只复制目录里的文件到 /tmp', '自动按递归处理，等价于 -r'], answer: [1], explain: 'cp 默认只处理普通文件，遇到目录会跳过并报 "cp: -r not specified; omitting directory"。拷目录树用 <code>cp -r</code>；备份配置文件建议 <code>cp -a</code>，把属主、权限、时间戳一并保留。' },
+    { id: 'q-exam2-5', type: 'judge', q: '<code>mkdir -p /tmp/a/b/c</code> 一条命令即可建出完整的三层目录。', options: ['正确', '错误'], answer: [0], explain: '-p（parents）会补齐所有缺失的中间目录，且路径已存在也不报错（退出码 0）。它是脚本与考试里创建嵌套目录结构的标准动作；不带 -p 时任一层缺失都会直接报错。' },
+    { id: 'q-exam2-6', type: 'single', q: '/tmp 下有 a.log、b.log、a.txt。执行 <code>rm -i /tmp/*.log</code>，rm 实际收到几个文件名？', options: ['3 个：通配符对所有文件生效', '2 个：shell 已把 *.log 展开成 a.log 和 b.log，a.txt 不匹配', '1 个：* 只匹配找到的第一个文件', '0 个：缺少引号导致命令失败'], answer: [1], explain: '展开由 shell 在命令运行前完成：*.log → a.log b.log（a.txt 不以 .log 结尾，不入选），rm -i 再逐个询问。理解"先展开、后执行"，就明白为什么删前用同样模式 <code>ls /tmp/*.log</code> 预览，等价于预演删除。' },
+    { id: 'q-exam2-7', type: 'single', q: '执行 <code>chmod 640 /home/student/todo.md</code> 后，与属主同组的用户对该文件？', options: ['可读可写', '只能读取', '可读可执行', '无任何权限'], answer: [1], explain: '640 = rw-r-----：属主读写、属组只读、其他人无权限。执行位对普通数据文件没有意义——只有程序与脚本需要 x。RHCSA 实操判分看最终权限位，8421 求和必须形成条件反射。' },
+    { id: 'q-exam2-8', type: 'single', q: '<code>umask 027</code> 之后新建一个目录，其权限是？', options: ['750（rwxr-x---）', '640（rw-r-----）', '755（rwxr-xr-x）', '727（rwx-w-rwx）'], answer: [0], explain: '目录从 777 出发按位扣 027 → 750。同掩码下的新文件从 666 出发得 640；755/644 是默认掩码 022 的结果。"目录 777、文件 666 两个出发点"正是 umask 计算题的第一陷阱。' },
+    { id: 'q-exam2-9', type: 'single', q: '目录 /home/private 权限为 700、属主 dev1。student 尝试 <code>cd /home/private</code> 并列出内容，结果是？', options: ['都能成功：目录总是可以进入的', 'Permission denied：其他人位为 0，没有 x 连进入都被拒绝', '能进入但 ls 提示权限不足', '系统提示输入 dev1 的密码后放行'], answer: [1], explain: '对目录而言 x 是"穿越门票"：没有 x，cd 直接被拒；没有 r 也列不出内容。700 把两种能力都只留给属主。反过来的"只有 r 没有 x"是另一类坑——能看名字、进不去也用不了。' },
+    { id: 'q-exam2-10', type: 'single', q: '<code>ls -l</code> 看到 <code>-rwsr-xr-x. 1 root root ... /usr/bin/passwd</code>，属主执行位上的 s 表示？', options: ['该文件只能由 root 执行', '其他用户执行它时，进程以文件属主 root 的身份运行（SUID）', '文件对属主是只写的', '执行时需要对组授权（SGID）'], answer: [1], explain: 'SUID 让进程的有效身份变成文件属主：普通用户运行 passwd 时临时持 root 身份，才写得了只有 root 能写的 /etc/shadow。属主已有 x 时显示小写 s；若属主没有 x 会显示大写 S（设了 SUID 却不可执行，通常是配置失误）。' },
+    { id: 'q-exam2-11', type: 'single', q: '对 /etc/hosts 建立软链接 <code>ln -s /etc/hosts /tmp/h1</code> 与硬链接 <code>ln /etc/hosts /tmp/h2</code>，随后管理员删除了 /etc/hosts。访问 h1 与 h2 的结果？', options: ['h1 报 No such file or directory；h2 仍可正常读取', '两者都仍可读取', 'h1 仍可读取；h2 报错', '两者都报错'], answer: [0], explain: '软链接存的是路径，目标名字消失即悬空；硬链接与原文件共享同一 inode，rm 只是让链接数减 1，数据仍在。对称地，删掉 h2 也不影响 /etc/hosts——每个名字地位平等。' },
+    { id: 'q-exam2-12', type: 'single', q: '要在 /var/log 里找出所有以 .log 结尾的文件，正确的命令是？', options: ['find /var/log -name "*.log"', 'find /var/log -name .log', 'find -name "*.log" /var/log', 'grep -r "*.log" /var/log'], answer: [0], explain: 'find 的语序是"路径在前、表达式在后"，-name 的模式要带通配符并加引号。B 少了 *，只会匹配名字恰好叫 .log 的文件；C 把路径放在表达式之后，真实 find 会报 "paths must precede expression"；grep 搜的是文件内容而不是文件名。' },
+    { id: 'q-exam2-13', type: 'judge', q: '同一文件系统内用 mv 移动文件，文件的 inode 号保持不变；用 cp 复制则会得到新的 inode。', options: ['正确', '错误'], answer: [0], explain: 'mv 在同一文件系统内是重命名目录项，inode 与数据原地不动（大文件秒移的原因），跨文件系统时才退化为复制+删除；cp 总是新建文件：新 inode、新数据块，属主默认变成执行复制的人（cp -a 可保留元数据）。' },
+  ],
+  tasks: [
+    { id: 'exam2-t1', points: 10, text: '将 /home/student/notes.txt 的权限改为：属主可读写、同组只读、其他人无任何权限。', hint: '八进制：读=4、写=2；读写=6、只读=4、无=0', solution: ['chmod 640 /home/student/notes.txt'],
+      check: { program: 'chmod', minNames: 2, firstArgPattern: '^640$', namePattern: '^/home/student/notes\\.txt$' } },
+    { id: 'exam2-t2', points: 10, text: '用符号模式给脚本 /home/student/scripts/backup.sh 的属主增加执行权限，其他权限保持不变。', hint: 'chmod 给谁(who) + 什么(perms)：u+x；等价的八进制是 744', solution: ['chmod u+x /home/student/scripts/backup.sh'],
+      check: { program: 'chmod', minNames: 2, firstArgPattern: '^(u\\+x|744)$', namePattern: 'backup\\.sh$' } },
+    { id: 'exam2-t3', points: 10, text: '让 Web 服务器进程能直接更新站点文件：把 /var/www/html/index.html 的属主和属组都改为 student。', hint: 'chown 用户:组 文件；改属主需要 root，普通用户加 sudo 前缀', solution: ['sudo chown student:student /var/www/html/index.html'],
+      check: { program: 'chown', minNames: 2, firstArgPattern: '^student:student$', namePattern: '/var/www/html/index\\.html$' } },
+    { id: 'exam2-t4', points: 10, text: '给 /etc/hosts 创建一个符号链接 /tmp/hosts-link（注意顺序：目标在前，链接名在后）。', hint: 'ln -s 目标 链接名', solution: ['ln -s /etc/hosts /tmp/hosts-link'],
+      check: { program: 'ln', flagsMust: [{ name: 'symbolic' }], minNames: 2, firstArgPattern: '^/etc/hosts$', namePattern: '^/tmp/hosts-link$' } },
+  ],
+};

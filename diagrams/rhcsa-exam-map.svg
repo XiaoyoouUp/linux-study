@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="490" viewBox="0 0 860 490" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="490" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">RHCSA（EX200）考纲域与本站阶段对照</text>
+  <rect x="40" y="56" width="780" height="54" rx="10" fill="#0d1b2e"/>
+  <text x="60" y="80" fill="#F0B429" font-weight="bold">考试形式：纯实机操作（无选择题）· RHEL 10 · 满分 300 分，及格 210 分（70%）<tspan x="60" dy="20" fill="#E8F7EE" font-weight="normal">限时约 3 小时 · 不提供互联网，可查 Red Hat 官方产品文档 · 配置必须重启后仍生效</tspan></text>
+  <rect x="40" y="130" width="330" height="306" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="60" y="158" font-weight="bold">RHCSA 考纲重点领域（权重未公布）<tspan x="60" dy="34" font-weight="normal">① 基础工具：文件操作、man、tar</tspan><tspan x="60" dy="36" font-weight="normal">② Shell 脚本：变量、判断、循环</tspan><tspan x="60" dy="36" font-weight="normal">③ 运行系统：开关机、systemd</tspan><tspan x="60" dy="36" font-weight="normal">④ 本地存储：分区、LVM、swap</tspan><tspan x="60" dy="36" font-weight="normal">⑤ 文件系统：挂载、fstab、权限</tspan><tspan x="60" dy="36" font-weight="normal">⑥ 用户与组：useradd、sudo</tspan><tspan x="60" dy="36" font-weight="normal">⑦ 安全：firewalld、SELinux</tspan></text>
+  <rect x="490" y="130" width="330" height="306" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="510" y="158" font-weight="bold">本站学习阶段（阶段 1~6 顺序学习）<tspan x="510" dy="44" font-weight="normal">阶段1 · Linux 初识与安装</tspan><tspan x="510" dy="44" font-weight="normal">阶段2 · 文件、目录与权限</tspan><tspan x="510" dy="44" font-weight="normal">阶段3 · vim、bash 与脚本</tspan><tspan x="510" dy="44" font-weight="normal">阶段4 · 用户、组与任务调度</tspan><tspan x="510" dy="44" font-weight="normal">阶段5 · 存储与软件管理</tspan><tspan x="510" dy="44" font-weight="normal">阶段6 · 网络、服务与安全</tspan></text>
+  <line x1="374" y1="188" x2="486" y2="198" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="188" x2="486" y2="242" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="224" x2="486" y2="286" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="260" x2="486" y2="412" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="296" x2="486" y2="368" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="332" x2="486" y2="242" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="332" x2="486" y2="380" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="368" x2="486" y2="330" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="374" y1="404" x2="486" y2="418" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="30" y="466" fill="#7b8ca0">备考建议：按阶段 1→6 顺序学习，每阶段完成结业考试；冲刺期反复练实机操作直至形成肌肉记忆。</text>
+</svg>

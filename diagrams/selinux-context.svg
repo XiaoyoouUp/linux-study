@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="470" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">SELinux：DAC 权限之后的第二道关卡（MAC）</text>
+  <rect x="40" y="84" width="190" height="64" rx="10" fill="#0d1b2e"/>
+  <text x="135" y="108" text-anchor="middle" fill="#ffffff" font-weight="bold">进程访问文件<tspan x="135" dy="20" fill="#E8F7EE" font-weight="normal">如 httpd 读网页目录</tspan></text>
+  <line x1="232" y1="116" x2="266" y2="116" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="270" y="84" width="190" height="64" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="365" y="108" text-anchor="middle" font-weight="bold">① DAC 传统权限<tspan x="365" dy="20" font-weight="normal" fill="#7b8ca0">rwx 检查通过才继续</tspan></text>
+  <line x1="462" y1="116" x2="496" y2="116" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="500" y="84" width="200" height="64" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="600" y="108" text-anchor="middle" font-weight="bold">② MAC SELinux 规则<tspan x="600" dy="20" font-weight="normal" fill="#7b8ca0">进程类型与文件类型匹配</tspan></text>
+  <line x1="702" y1="100" x2="726" y2="90" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="704" y="78" fill="#159A48">匹配</text>
+  <line x1="702" y1="132" x2="726" y2="158" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="730" y="70" width="100" height="40" rx="10" fill="#E8F7EE" stroke="#159A48" stroke-width="2"/>
+  <text x="780" y="95" text-anchor="middle" fill="#159A48" font-weight="bold">允许访问</text>
+  <rect x="730" y="140" width="100" height="40" rx="10" fill="#ffffff" stroke="#c53030" stroke-width="2"/>
+  <text x="780" y="165" text-anchor="middle" fill="#c53030" font-weight="bold">拒绝访问</text>
+  <text x="686" y="184" fill="#7b8ca0">不匹配</text>
+  <text x="686" y="206" fill="#c53030">拒绝记录进审计日志</text>
+  <rect x="40" y="210" width="420" height="120" rx="10" fill="#0d1b2e"/>
+  <text x="60" y="238" fill="#F0B429" font-weight="bold">$ ls -Z /var/www/html/index.html<tspan x="60" dy="24" fill="#E8F7EE" font-weight="normal">unconfined_u:object_r:httpd_sys_content_t:s0</tspan><tspan x="60" dy="22" fill="#7b8ca0">　└user　└role　└type　　└sensitivity</tspan><tspan x="60" dy="22" fill="#7b8ca0">四元组 user:role:type:sensitivity（type 是关键）</tspan></text>
+  <rect x="500" y="210" width="330" height="120" rx="10" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="520" y="238" font-weight="bold">工作模式（getenforce 查看）<tspan x="520" dy="24" font-weight="normal">Enforcing 强制拦截（默认）</tspan><tspan x="520" dy="24" font-weight="normal">Permissive 只记录不拦截</tspan><tspan x="520" dy="24" fill="#7b8ca0" font-weight="normal">setenforce 0/1 临时切换</tspan></text>
+  <text x="40" y="366" fill="#7b8ca0">例外放行用布尔值：setsebool -P xxx on；审计日志在 /var/log/audit/audit.log（ausearch 查询）。</text>
+  <text x="30" y="448" fill="#7b8ca0">记忆：先 DAC 后 MAC，类型匹配才放行；练习场不支持 SELinux 管理命令，请在真实环境练习。</text>
+</svg>

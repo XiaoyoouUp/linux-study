@@ -193,6 +193,7 @@ a.card:hover { box-shadow: 0 8px 24px rgba(28,58,110,.12); transform: translateY
 .callout.cka { background: #0d1b2e; border-color: #0d1b2e; color: #cfe0fb; }
 .callout.cka .co-title { color: #9fd0ff; }
 .callout.cka code { background: #16273f !important; color: #9fd0ff !important; border-color: #2c4468 !important; }
+.callout.cka strong { color: #ffffff; }
 
 figure.diagram { margin: 20px 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 12px; text-align: center; }
 figure.diagram img { max-width: 100%; height: auto; }

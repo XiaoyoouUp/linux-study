@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="460" viewBox="0 0 860 460" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#0d1b2e">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#7b8ca0"/></marker></defs>
+  <rect x="0" y="0" width="860" height="460" fill="#ffffff"/>
+  <text x="30" y="34" font-size="15" font-weight="bold">cp / mv / rm / ln -s：对目录项与 inode 的影响</text>
+  <line x1="40" y1="290" x2="820" y2="290" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="60" y="76" font-weight="bold" fill="#159A48">cp：新建 inode，复制数据</text>
+  <rect x="60" y="90" width="150" height="58" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="135" y="112" font-weight="bold" text-anchor="middle">file<tspan x="135" dy="20" font-weight="normal" fill="#7b8ca0">inode 10 · 数据A</tspan></text>
+  <line x1="212" y1="119" x2="252" y2="119" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="254" y="90" width="150" height="58" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="329" y="112" font-weight="bold" text-anchor="middle">copy<tspan x="329" dy="20" font-weight="normal">新 inode 11</tspan></text>
+  <text x="450" y="76" font-weight="bold" fill="#159A48">mv（同分区）：只改目录项</text>
+  <rect x="450" y="90" width="150" height="58" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="525" y="112" font-weight="bold" text-anchor="middle">file<tspan x="525" dy="20" font-weight="normal" fill="#7b8ca0">inode 10</tspan></text>
+  <line x1="602" y1="119" x2="642" y2="119" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="644" y="90" width="150" height="58" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="719" y="112" font-weight="bold" text-anchor="middle">file<tspan x="719" dy="20" font-weight="normal">inode 10 不变</tspan></text>
+  <text x="60" y="318" font-weight="bold" fill="#c53030">rm：删目录项，计数归零才释放</text>
+  <rect x="60" y="332" width="150" height="58" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="135" y="354" font-weight="bold" text-anchor="middle">file<tspan x="135" dy="20" font-weight="normal" fill="#7b8ca0">目录项被删除</tspan></text>
+  <line x1="212" y1="361" x2="252" y2="361" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="254" y="332" width="150" height="58" rx="8" fill="#ffffff" stroke="#c53030" stroke-width="1.5"/>
+  <text x="329" y="354" font-weight="bold" text-anchor="middle">inode 10<tspan x="329" dy="20" font-weight="normal" fill="#c53030">计数 0 → 释放</tspan></text>
+  <text x="450" y="318" font-weight="bold" fill="#159A48">ln -s：新建路径型链接</text>
+  <rect x="450" y="332" width="150" height="58" rx="8" fill="#ffffff" stroke="#7b8ca0" stroke-width="1.5"/>
+  <text x="525" y="354" font-weight="bold" text-anchor="middle">file<tspan x="525" dy="20" font-weight="normal" fill="#7b8ca0">inode 10</tspan></text>
+  <line x1="602" y1="361" x2="642" y2="361" stroke="#7b8ca0" stroke-width="1.5" marker-end="url(#ah)"/>
+  <rect x="644" y="332" width="150" height="58" rx="8" fill="#E8F7EE" stroke="#159A48" stroke-width="1.5"/>
+  <text x="719" y="354" font-weight="bold" text-anchor="middle">link<tspan x="719" dy="20" font-weight="normal">新 inode 存路径</tspan></text>
+  <text x="40" y="424">同分区 mv 是瞬间完成的改名；跨分区 mv 相当于复制+删除。<tspan x="40" dy="21" fill="#7b8ca0">cp 之后两个文件互相独立，改一个不影响另一个；ln 不加 -s 是硬链接。</tspan></text>
+</svg>

@@ -57,6 +57,7 @@ const PROGRAMS = {
   gunzip: { flags: [['k', 'keep', 'bool'], ['v', 'verbose', 'bool']] },
   man: { flags: [['k', 'apropos', 'bool'], ['a', 'all', 'bool']] },
   echo: { flags: [['n', 'n', 'bool'], ['e', 'e', 'bool']] },
+  cd: { flags: [['P', 'physical', 'bool']] },
   whoami: { flags: [] },
   hostname: { flags: [['f', 'fqdn', 'bool']] },
   pwd: { flags: [['P', 'physical', 'bool']] },
@@ -399,6 +400,8 @@ function validate(r) {
     case 'wc':
       if (!args.length) r.warnings.push(`${p} 未指定文件：真实 shell 会在此等待标准输入（Ctrl+D 结束）`);
       return null;
+    case 'cd':
+      return args.length > 1 ? 'cd 只接受一个目录参数' : null;
     case 'whoami':
     case 'hostname':
     case 'pwd':

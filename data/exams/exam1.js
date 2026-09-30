@@ -1,0 +1,32 @@
+/* 阶段一结业考试：Linux 初识与安装 */
+export const exam = {
+  id: 'exam1',
+  stageId: 's1',
+  title: '阶段一结业考试',
+  duration: 30,
+  passScore: 66,
+  questions: [
+    { id: 'q-exam1-1', type: 'single', q: '新同事 A 说"我们服务器用的是 Linux"，同事 B 说"准确说我们用的是 RHEL 10"。两人的说法矛盾吗？', options: ['矛盾，Linux 与 RHEL 是两个互不兼容的操作系统', '不矛盾：RHEL 10 是发行版（distribution），底层使用的就是 Linux 内核', '矛盾，RHEL 的内核是 FreeBSD，不是 Linux', '不矛盾，RHEL 是 Linux 内核自带的一个图形界面'], answer: [1], explain: '发行版 = Linux 内核 + GNU 工具链 + 包管理器 + 文档与支持，是"包含"关系而非矛盾：B 说的是发行版名字，A 说的是内核体系。RHEL、Ubuntu、SUSE 都基于 Linux 内核（RHEL 10 基于 6.12 内核系列）；FreeBSD 是另一套独立内核；内核更没有"图形界面"一说。' },
+    { id: 'q-exam1-2', type: 'single', q: '原 CentOS 7 业务要迁移，主管的要求是：与 RHEL 二进制兼容、完全免费、社区维护。应选择哪个？', options: ['Fedora Server', 'CentOS Stream', 'Rocky Linux 或 AlmaLinux', 'openSUSE Tumbleweed'], answer: [2], explain: 'Rocky/AlmaLinux 位于 RHEL 的<strong>下游</strong>：用 RHEL 源码重建、二进制兼容、免费社区维护，是 CentOS 7 的正统接替者。CentOS Stream 在<strong>上游</strong>，改动先于 RHEL 落地，稳定性节奏偏"新"；Fedora 更激进且生命周期约 13 个月；openSUSE 属 SUSE 系，包管理器是 zypper，不与 RHEL 二进制兼容。' },
+    { id: 'q-exam1-3', type: 'single', q: '关于 dnf 与 rpm 的关系，正确的是？', options: ['dnf 能自动解析依赖并从仓库成套安装；rpm 只处理单个包文件，缺依赖直接报错', 'dnf 只能查询软件包，安装必须交给 rpm 完成', 'rpm 是 dnf 的下一代替代品', '两者只是名字不同，参数完全通用'], answer: [0], explain: 'rpm 是底层包格式与工具，一次只处理一个 .rpm 文件，装 A 缺 B 时不会去找 B（"依赖地狱"）；dnf 在其上叠加了仓库元数据与依赖解析，一条 <code>dnf install</code> 会把依赖一起装好并放进事务。RHEL 8 起 yum 命令已是 dnf 的别名，rpm 仍在但通常只用于查询单个包。' },
+    { id: 'q-exam1-4', type: 'single', q: '规划 RHEL 磁盘布局时，独立划分 /boot 分区的目的是？', options: ['存放内核 vmlinuz、initramfs 与 GRUB2 引导文件，给引导链路一个简单独立的角落', '存放所有用户的个人数据', '作为虚拟内存的交换区域', '存放数据库等大型应用'], answer: [0], explain: '/boot 放引导相关的文件：内核（如 /boot/vmlinuz-6.12.0-55.el10.x86_64）、initramfs 与 GRUB2 配置，约 1 GiB 足够。用户数据在 /home，交换是 swap，大型第三方应用常在 /opt。注意内核会随更新累积旧版本，/boot 给太小会在数次升级后被塞满。' },
+    { id: 'q-exam1-5', type: 'single', q: '生产服务器 16 GiB 内存、4 GiB swap。监控显示 swap 使用率升至 80%、系统响应明显变慢。正确的理解是？', options: ['swap 是缓存，用得多说明性能好，无需处理', '物理内存吃紧，内核把不活跃的内存页换出到 swap；应尽快排查内存大户，否则 swap 用尽后可能触发 OOM 杀进程', '必须立刻重启服务器释放 swap', 'swap 满了之后系统会自动扩容'], answer: [1], explain: 'swap 是物理内存不足时存放"冷页"的磁盘区域：先表现为变慢（换页开销），swap 也耗尽时内核启动 OOM Killer 按 oom_score 选中进程 SIGKILL——现象就是服务莫名消失。重启能暂时清空 swap 但不解决根因；swap 大小是安装/规划时决定的，不会自动扩容。' },
+    { id: 'q-exam1-6', type: 'single', q: 'RHEL 安装时选择自动分区（默认 LVM），/etc/fstab 中根分区的设备名写作 /dev/mapper/rhel-root。它表示？', options: ['卷组 rhel 中名为 root 的逻辑卷，挂载到 /', '一块型号为 rhel-root 的物理硬盘', '一个网络存储（NFS）路径', 'swap 分区的别名'], answer: [0], explain: 'LVM 层级是 物理卷(PV) → 卷组(VG) → 逻辑卷(LV)：安装器把盘做成 PV 聚成名为 <code>rhel</code> 的 VG，再切出 root/home/swap 三个 LV，设备节点出现在 <code>/dev/mapper/卷组名-逻辑卷名</code>。本站练习环境的 /etc/fstab 正是 rhel-root、rhel-swap 的布局。' },
+    { id: 'q-exam1-7', type: 'judge', q: 'RHCSA（EX200）考试要求考生在考试机上从零安装 RHEL 并完成分区规划。', options: ['正确', '错误'], answer: [1], explain: '考试机是<strong>预装好 RHEL 10</strong> 的实机环境，不考安装流程；考的是装好之后的配置与管理。但"读懂分区与挂载"是存储类题目的地基：fstab 设备名、/boot 与 swap 的作用、LVM 命名规则，都是本阶段要建立的概念。' },
+    { id: 'q-exam1-8', type: 'single', q: '想知道 /etc/crontab 文件里"分 时 日 月 周"五个字段的完整格式说明，应查阅？', options: ['man crontab', 'man 5 crontab', 'man 8 crontab', 'date --help'], answer: [1], explain: 'crontab 同名手册跨节：第 1 节讲 crontab <strong>命令</strong>（编辑、查看任务表），第 5 节讲 crontab <strong>文件格式</strong>。查文件字段就是 <code>man 5 crontab</code>；8 节是管理命令节（cron 守护进程的手册是 crond）。--help 给命令用法摘要，不含文件格式细节。' },
+    { id: 'q-exam1-9', type: 'single', q: '在 man 手册页内，"向下翻一页 / 搜索关键词 / 退出"分别对应？', options: ['空格 / 输入 / 加关键词后回车 / q', 'Ctrl+C / Tab / Ctrl+X', 'Esc :wq / G / i', '双击 Tab / Ctrl+R / Ctrl+D'], answer: [0], explain: 'man 用 less 分页器：空格向下翻页（b 向上）、<code>/关键词</code> 搜索且 <code>n</code> 跳到下一处匹配、<code>q</code> 退出。C 是 vim 的保存退出写法；Tab、Ctrl+R、Ctrl+D 是 shell 层的快捷键，进入 man 后不生效。' },
+    { id: 'q-exam1-10', type: 'single', q: '刚接触一条新命令，只想快速确认"有哪些选项、怎么传参"，最高效的方式是？', options: ['命令 --help：输出程序自带的简短用法摘要', 'man -k 命令名：列出所有相关手册页', '在生产环境里直接执行几次试试', '到 /usr/share/doc 里通读全部 README'], answer: [0], explain: '<code>--help</code> 是程序自己打印的用法摘要，秒级确认语法；<code>man -k</code> 解决的是"忘了命令名"的反查；乱试命令在真实环境有风险（尤其 rm 类）；/usr/share/doc 适合看背景与示例，不是语法速查。需要深读选项含义时再翻 man。' },
+    { id: 'q-exam1-11', type: 'single', q: '提示符显示 [student@server1 ~]$。关于其中的 ~，正确的是？', options: ['当前目录是家目录 /home/student', '当前用户是 root', '主机名是 ~', '表示上一级目录'], answer: [0], explain: '提示符四段：用户名@主机名:当前目录:身份符。~ 是<strong>家目录缩写</strong>（student 的家是 /home/student），cd 不带参数也能回家；切到 /etc 时该位置显示 etc（取最后一段）。身份看最后一位：$ 普通用户、# root。' },
+    { id: 'q-exam1-12', type: 'multi', q: '关于 bash 命令行的书写规则，正确的有哪些？', options: ['程序与选项、选项与参数之间用空格分隔', '多个布尔短选项可以合并，如 ls -lah 等价 ls -l -a -h', '命令、选项、文件名都区分大小写', '每条命令必须同时带选项和参数才能执行'], answer: [0, 1, 2], explain: 'bash 以空格切分单词、按字节精确匹配（大小写敏感，LS 不存在）。whoami、pwd 不带任何选项参数照常执行，D 错。补充一个边界：需要取值的短选项（如 tar -f 名字）合并时会吞掉后面的字符当值——初学阶段先记住"开关型短选项可合并"。' },
+    { id: 'q-exam1-13', type: 'single', q: '想原样找回并重新执行本次会话中第 12 条历史命令，正确做法是？', options: ['history 查看带编号的命令列表，然后执行 !12', 'ls -l 列出文件就能看到命令内容', '输入 !!12 重跑', 'history 12 会只显示第 12 条并自动执行'], answer: [0], explain: '<code>history</code> 输出编号 + 命令，<code>!编号</code> 直接重跑那条（<code>!!</code> 是重跑上一条，不带编号语法）。历史持久化在 ~/.bash_history，下次登录仍在。history 12 的语义是"显示最近 12 条"，既不单显也不会执行。' },
+    { id: 'q-exam1-14', type: 'single', q: '终端里一条命令持续刷屏，想立即终止它，应按？', options: ['Ctrl+C：向前台进程发送中断信号（INT）', 'Ctrl+D：结束当前输入', 'Ctrl+Z：把命令彻底杀掉', '双击 Tab 让 bash 自动结束'], answer: [0], explain: 'Ctrl+C 向前台进程组发 SIGINT，多数程序收到即退出；Ctrl+D 是 EOF（结束输入流/退出会话），不是杀进程；Ctrl+Z 是把进程<strong>暂停</strong>挂起（不是终止，可 fg 恢复）；Tab 只做补全。信号机制的细节在阶段五展开。' },
+  ],
+  tasks: [
+    { id: 'exam1-t1', points: 10, text: '查看 chmod 命令的手册页。', hint: 'man + 页名；chmod 在第 1 节，直接 man chmod 即可', solution: ['man chmod'],
+      check: { program: 'man', minNames: 1, namePattern: '^chmod' } },
+    { id: 'exam1-t2', points: 10, text: '查看日志文件 /var/log/messages 的前 5 行。', hint: 'head -n 5 文件路径', solution: ['head -n 5 /var/log/messages'],
+      check: { program: 'head', flagsMust: [{ name: 'lines', equals: '5' }], minNames: 1, namePattern: '/var/log/messages' } },
+    { id: 'exam1-t3', points: 10, text: '统计 /etc/passwd 文件一共有多少行。', hint: 'wc -l 统计行数', solution: ['wc -l /etc/passwd'],
+      check: { program: 'wc', flagsMust: [{ name: 'lines' }], minNames: 1, namePattern: '/etc/passwd' } },
+  ],
+};
